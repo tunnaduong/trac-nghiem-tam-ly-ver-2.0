@@ -1,51 +1,309 @@
+<!-- Trang web được lập trình bởi Dương Tùng Anh - C4K60 Chuyên Hà Nam -->
+<!-- Mọi thông tin chi tiết xin liên hệ https://facebook.com/tunnaduong/ -->
 <head>
   <title>Trắc nghiệm về chỉ số tâm trạng - Version 2.0</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/5468db3c8c.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
   <style>
     body {
-      background: rgb(0,212,255);
-      background: linear-gradient(133deg, rgba(0,212,255,1) 0%, rgba(191,141,207,1) 90%);
+      background: rgb(53,95,103);
+background: linear-gradient(133deg, rgba(53,95,103,1) 0%, rgba(226,107,38,1) 53%);
+      /* background: rgb(0,212,255);
+      background: linear-gradient(133deg, rgba(0,212,255,1) 0%, rgba(191,141,207,1) 90%); */
     }
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+.txts {
+ text-align: center;
+  
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
     .mainDiv {
         background: #fff;
         border-radius: 10px;
         width: 420px;
         margin:0px auto;
-        padding: 10px 10px 40px 10px;
+        padding: 10px 10px 10px 10px;
         margin-top: 30px;
         -webkit-box-shadow: 0 5px 13px 13px rgba(0, 0, 0, 0.1);
     -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     }
+    .sidebar-box {
+  max-height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-box .read-more { 
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  text-align: center; 
+  margin: 0; padding: 30px 0; 
+  
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+  background-image: linear-gradient(to bottom, transparent, white);
+}
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+.sk-folding-cube {
+   width: 80px;
+    height: 80px;
+}
+
   </style>
+
 </head>
 <body>
 
-  <div class="mainDiv">
-    <img src="depress.jpg" style="width: 400px;border-radius: 8px;">
-    <h3><b>Trắc nghiệm về chỉ số tâm trạng</b></h3>
+  <div class="mainDiv" style="margin-top: 10px;" id="mainDiv">
+<div class="loadd" style="display: none;margin-top: 100px;margin-bottom: 100px;" id="concu">
+
+<div class="sk-folding-cube">
+  <div class="sk-cube1 sk-cube"></div>
+  <div class="sk-cube2 sk-cube"></div>
+  <div class="sk-cube4 sk-cube"></div>
+  <div class="sk-cube3 sk-cube"></div>
+</div>
+<br>
+<center>
+<h4>Bám chắc nhé! Đang tải trắc nghiệm...</h4>
+<h6><i class="fas fa-code"></i> with <i class="fas fa-heart"></i> by Dương Tùng Anh</h6>
+</center>
+</div>
+<div class="ready" style="display: none;" id="ready">
+  <center>
+  <h4 style="margin-top: 180px;">SẴN SÀNG!</h4>
+</center>
+  </div>
+
+    <div class="insidemainDiv" id="insidemainDiv" style="display: block;">
+    <img src="depress_heal.jpg" style="width: 400px;border-radius: 8px;">
+    <h3 style="margin-top: 15px;font-size: 25px;"><b>Khảo sát phát hiện sớm dấu hiện trầm cảm</b></h3>
+    <div class="sidebar-box">
     <p>
-Trong xã hội ngày nay, với nhịp sống công nghệ khiến mỗi người chúng ta không phải lúc nào cũng hài lòng về bản thân, công việc gia đình cũng như các mối quan hệ xã hội...
-Để giúp các bạn biết cách quản lý và chăm sóc sức khoẻ tâm thần cho bản thân, chủ động kiểm soát tâm trạng của mình, chúng tôi xây dựng trang web tự đánh giá tâm trạng và những lời khuyên tương ứng với kết quả trắc nghiệm.</p>
+Hiện nay, nhiều bệnh tâm thần đã được chữa khỏi nếu được phát hiện
+sớm và điều trị hợp lý kịp thời. Chăm sóc sức khỏe tâm thần là nâng tầm
+chất lượng sống và cảm xúc là một phần quan trọng không thể thiếu của
+sức khỏe tâm thần.</p>
+<p class="read-more" style="display: none;"><a href="#" class="button"><button type="button" class="btn btn-info" style="opacity: 0.5;">Xem thêm...</button></a></p>
+</div>
+
 <hr>
 <h5><b>Thông tin về trắc nghiệm</b></h5>
-<p style="display: inline;"><i class="fas fa-user-edit"></i> Người tạo: </p><p id="complete" style="display: inline;">Phòng Khám Chuyên Khoa Tâm Thần An Sinh</p>
+<p style="display: inline;"><i class="fas fa-user-edit"></i> Người tạo: </p><p id="complete" style="display: inline;">Trung tâm CSSK tâm thần cộng đồng</p>
 <br>
 <p style="display: inline;"><i class="fas fa-clock"></i> Thời gian dự tính: </p><p id="complete" style="display: inline;">3 phút</p>
 <br>
-<p style="display: inline;"><i class="fas fa-eye"></i> Lượt xem: </p><p id="view" style="display: inline;">null</p>
-<br>
-<p style="display: inline;"><i class="fas fa-user-check"></i> Lượt hoàn thành: </p><p id="complete" style="display: inline;">null</p>
+<p style="display: inline;"><i class="fas fa-user-check"></i> Lượt hoàn thành: </p><p id="complete" style="display: inline;">23</p>
 <br>
 
-<a href="/" style="float: right;font-size: 18px;">Làm trắc nghiệm <i class="fas fa-arrow-right"></i></a>
-  </div>
+<a href="#" class="txts" style="float: right;font-size: 20px;color: #e26b26;" onclick="mainFade()"><b>Làm trắc nghiệm <i class="fas fa-arrow-right"></i></b></a>
+<br>
+</div>
+</div>
+<script>
+  var $el, $ps, $up, totalHeight;
+
+$(".sidebar-box .button").click(function() {
+      
+  totalHeight = 0
+
+  $el = $(this);
+  $p  = $el.parent();
+  $up = $p.parent();
+  $ps = $up.find("p:not('.read-more')");
+  
+  // measure how tall inside should be by adding together heights of all inside paragraphs (except read-more paragraph)
+  $ps.each(function() {
+    totalHeight += $(this).outerHeight();
+  });
+        
+  $up
+    .css({
+      // Set height to prevent instant jumpdown when max height is removed
+      "height": $up.height(),
+      "max-height": 9999
+    })
+    .animate({
+      "height": totalHeight
+    });
+  
+  // fade out read-more
+  $p.fadeOut();
+  
+  // prevent jump-down
+  return false;
+    
+});
+
+function mainFade(){
+const element =  document.querySelector('.insidemainDiv')
+element.classList.add('animated', 'zoomOut')
+element.addEventListener('animationend', function() { loadd() })
+setTimeout(hideDiv, 1050)
+return true;
+function hideDiv(){
+  document.getElementById("insidemainDiv").style.display = 'none';
+}
+}
+
+
+function loadd(){
+document.getElementById("concu").style.display = 'block';
+const element =  document.querySelector('.loadd')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(loadBounce, 2050) })
+}
+
+
+function loadBounce(){
+const element =  document.querySelector('.loadd')
+element.classList.remove('fadeInDown')
+element.classList.add('bounceOut')
+element.addEventListener('animationend', function() { ready() })
+}
+
+function ready(){
+    document.getElementById("mainDiv").style.width = '420px';
+  document.getElementById("mainDiv").style.height = '427px';
+  document.getElementById("concu").style.display = 'none';
+document.getElementById("ready").style.display = 'block';
+const element =  document.querySelector('.ready')
+element.classList.add('animated', 'bounceIn')
+element.addEventListener('animationend', function() { endLoad() })
+}
+
+function endLoad(){
+  document.getElementById("mainDiv").style.display = 'block';
+  document.getElementById("mainDiv").style.width = '420px';
+  document.getElementById("mainDiv").style.height = '427px';
+  const element =  document.querySelector('.mainDiv')
+  setTimeout(finalEnd, 1550)
+  function finalEnd(){
+element.classList.add('animated' , 'fadeOut', 'faster')
+}
+}
+
+
+</script>
+
 
 </body>
