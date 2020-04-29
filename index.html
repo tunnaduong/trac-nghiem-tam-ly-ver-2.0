@@ -65,6 +65,9 @@ body {
   position: relative;
   overflow: hidden;
 }
+.main{
+  color: white;
+}
 .sidebar-box .read-more { 
   position: absolute; 
   bottom: 0; 
@@ -167,13 +170,19 @@ body {
    width: 80px;
     height: 80px;
 }
+@media (max-width:375px) {
+  .mainDiv{
+    margin-left: -22;
+    margin-top: -12;
+  }
 
+}
   </style>
 
 </head>
 <body>
 
-  <div class="mainDiv" style="margin-top: 10px;" id="mainDiv">
+  <div class="mainDiv" style="transform: scale(0.9, 0.9);" id="mainDiv">
 <div class="loadd" style="display: none;margin-top: 100px;margin-bottom: 100px;" id="concu">
 
 <div class="sk-folding-cube">
@@ -215,7 +224,7 @@ sức khỏe tâm thần.</p>
 <p style="display: inline;"><i class="fas fa-user-check"></i> Lượt hoàn thành: </p><p id="complete" style="display: inline;">23</p>
 <br>
 
-<a href="#" class="txts" style="float: right;font-size: 20px;color: #e26b26;" onclick="mainFade()"><b>Làm trắc nghiệm <i class="fas fa-arrow-right"></i></b></a>
+<a href="#" class="txts" style="float: right;font-size: 20px;color: #e26b26;" onclick="mainFade()"><b>Làm trắc nghiệm <i class="fas fa-chevron-right"></i></b></a>
 <br>
 </div>
 </div>
@@ -299,11 +308,78 @@ function endLoad(){
   setTimeout(finalEnd, 1550)
   function finalEnd(){
 element.classList.add('animated' , 'fadeOut', 'faster')
+element.addEventListener('animationend', function() { warmup() })
 }
 }
 
+function warmup(){
+  document.getElementById("mainDiv").style.display = 'none';
+document.getElementById("warmup").style.display = 'block';
+document.getElementById("truoc").style.display = 'block';
+const element =  document.querySelector('.warmup')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { warmup2() })
+function warmup2(){
+  document.getElementById("sau").style.display = 'block';
+const element =  document.querySelector('.warmup2')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(fadeWarm, 2050) })
+}
+function fadeWarm(){
+const element =  document.querySelector('.warmup3')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { askName() })
+  }
+}
+
+function askName(){
+document.getElementById("warmup").style.display = 'none';
+document.getElementById("askName").style.display = 'block';
+document.getElementById("tenban").style.display = 'block';
+const element =  document.querySelector('.name')
+element.classList.add('animated', 'fadeInDown')
+}
+
+function sex(){
+
+const element =  document.querySelector('.name')
+element.classList.remove('fadeInDown')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { document.getElementById("tenban").style.display = 'none'; })
+  
+}
 
 </script>
+<style>
+  .but:link, .but:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
+.but:hover, .but:active {
+  background-color: red;
+}
+</style>
+<div class="warmup3" id="warmup" style="display: none;">
+  <center>
+<h3 class="main warmup" id="truoc" style="display: none;margin-top: 50px;">Trước khi bắt đầu,</h3>
+<h3 class="main warmup2" id="sau" style="display: none;">chúng tôi muốn biết một vài thông tin cá nhân của bạn.</h3>
+</center>
+</div>
+
+<div id="askName" style="display: none;">
+  <center>
+    <div id="tenban" style="display: none;width: 600px;">
+    <h3 class="main name" style="margin-top: 50px;">Uhmm....Tên bạn là gì nhỉ?</h3>
+    <input class="form-control form-control-lg name2" type="text" placeholder="VD: Dương Tùng Anh">
+    <br>
+    <a class="but" href="javascript:sex()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </center>
+</div>
 
 </body>
