@@ -55,7 +55,7 @@ body {
         width: 420px;
         margin:0px auto;
         padding: 10px 10px 10px 10px;
-        margin-top: 30px;
+        margin-top: 10px;
         -webkit-box-shadow: 0 5px 13px 13px rgba(0, 0, 0, 0.1);
     -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
@@ -173,7 +173,7 @@ body {
 @media (max-width:375px) {
   .mainDiv{
     margin-left: -22;
-    margin-top: -12;
+    margin-top: -30;
   }
 
 }
@@ -347,6 +347,8 @@ element.classList.add('animated', 'fadeOutDown')
 element.addEventListener('animationend', function() { document.getElementById("tenban").style.display = 'none'; askSex() })
   function askSex(){
     document.getElementById("gioitinh").style.display = 'block';
+    document.getElementById("progressbar").innerHTML = "40%";
+    document.getElementById("progressbar").style.width = '40%';
 const element =  document.querySelector('.sex')
 element.classList.add('animated', 'fadeInDown')
   }
@@ -359,10 +361,46 @@ element.classList.add('animated', 'fadeOutDown')
 element.addEventListener('animationend', function() { document.getElementById("gioitinh").style.display = 'none'; askAge() })
   function askAge(){
 document.getElementById("tuoi").style.display = 'block';
+document.getElementById("progressbar").innerHTML = "70%";
+    document.getElementById("progressbar").style.width = '70%';
 const element =  document.querySelector('.age')
 element.classList.add('animated', 'fadeInDown')
 }
 }
+
+function thongbao(){
+  const element =  document.querySelector('.age')
+element.classList.remove('animated', 'fadeInDown')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { document.getElementById("tuoi").style.display = 'none'; document.getElementById("progressbar").innerHTML = "100%";
+document.getElementById("progressbar").style.width = '100%'; setTimeout(anProgress, 1050) })
+ function anProgress(){
+const element =  document.querySelector('.pgb')
+element.classList.add('animated', 'fadeOutUp')
+element.addEventListener('animationend', function() { document.getElementById("pgb-main").style.display = 'none';hienThongbao() })
+ }
+function hienThongbao(){
+document.getElementById("thongbao-done").style.display = 'block';
+document.getElementById("thongbao-truoc").style.display = 'block';
+const element =  document.querySelector('.done')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { hienThongbao2() })
+}
+function hienThongbao2(){
+  document.getElementById("thongbao-sau").style.display = 'block';
+const element =  document.querySelector('.done2')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(fadeThongbao, 2050) })
+}
+function fadeThongbao(){
+const element =  document.querySelector('.done3')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { question1() })
+  }
+
+}
+
+
 
 </script>
 <style>
@@ -429,14 +467,12 @@ element.classList.add('animated', 'fadeInDown')
 </div>
 
 <div id="askName" style="display: none;">
-
+    <div class="progress pgb" id="pgb-main">
+    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:10%" id="progressbar">10%</div>
+    </div>
   <center>
-    <div class="progress">
-  <div class="progress-bar progress-bar-striped active" role="progressbar"
-  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-    40%
-  </div>
-</div>
+    
+
     <div id="tenban" style="display: none;width: 380px;">
     <h3 class="main name" style="margin-top: 50px;">Uhmm....Tên bạn là gì nhỉ?</h3>
     <input class="form-control form-control-lg name2" type="text" placeholder="VD: Dương Tùng Anh">
@@ -464,9 +500,14 @@ element.classList.add('animated', 'fadeInDown')
     <h3 class="main age" style="margin-top: 50px;">Được rồi, câu hỏi cuối cùng này... Bạn hiện nay bao nhiêu tuổi?</h3>
     <input class="form-control form-control-lg name2" type="text" placeholder="VD: 17">
     <br>
-    <a class="but" href="javascript:sex()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+    <a class="but" href="javascript:thongbao()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
     </div>
   </center>
 </div>
-
+<div class="done3" id="thongbao-done" style="display: none;">
+  <center>
+<h3 class="main done" id="thongbao-truoc" style="display: none;margin-top: 50px;">Thật tốt khi được hiểu thêm về bạn,</h3>
+<h3 class="main done2" id="thongbao-sau" style="display: none;">giờ chúng ta hãy cùng bắt đầu trắc nghiệm nào...</h3>
+</center>
+</div>
 </body>
