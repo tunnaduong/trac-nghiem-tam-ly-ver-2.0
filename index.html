@@ -205,7 +205,7 @@ body {
 
     <div class="insidemainDiv" id="insidemainDiv" style="display: block;">
     <img src="depress_heal.jpg" style="width: 400px;border-radius: 8px;">
-    <h3 style="margin-top: 15px;font-size: 25px;"><b>Khảo sát phát hiện sớm dấu hiện trầm cảm</b></h3>
+    <h3 style="margin-top: 15px;font-size: 25px;"><b>Khảo sát phát hiện sớm dấu hiệu trầm cảm</b></h3>
     <div class="sidebar-box">
     <p>
 Hiện nay, nhiều bệnh tâm thần đã được chữa khỏi nếu được phát hiện
@@ -265,9 +265,9 @@ $(".sidebar-box .button").click(function() {
 
 function mainFade(){
 const element =  document.querySelector('.insidemainDiv')
-element.classList.add('animated', 'zoomOut')
+element.classList.add('animated', 'fadeOut', 'faster')
 element.addEventListener('animationend', function() { loadd() })
-setTimeout(hideDiv, 1050)
+setTimeout(hideDiv, 550)
 return true;
 function hideDiv(){
   document.getElementById("insidemainDiv").style.display = 'none';
@@ -373,7 +373,11 @@ function thongbao(){
 element.classList.remove('animated', 'fadeInDown')
 element.classList.add('animated', 'fadeOutDown')
 element.addEventListener('animationend', function() { document.getElementById("tuoi").style.display = 'none'; document.getElementById("progressbar").innerHTML = "100%";
-document.getElementById("progressbar").style.width = '100%'; setTimeout(anProgress, 1050) })
+document.getElementById("progressbar").style.width = '100%';loadProgress() ; setTimeout(anProgress, 2050) })
+ function loadProgress(){
+  const element =  document.querySelector('.pgb2')
+element.classList.add('progress-bar-striped', 'progress-bar-animated')
+ }
  function anProgress(){
 const element =  document.querySelector('.pgb')
 element.classList.add('animated', 'fadeOutUp')
@@ -399,7 +403,6 @@ element.addEventListener('animationend', function() { question1() })
   }
 
 }
-
 
 
 </script>
@@ -468,13 +471,13 @@ element.addEventListener('animationend', function() { question1() })
 
 <div id="askName" style="display: none;">
     <div class="progress pgb" id="pgb-main">
-    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:10%" id="progressbar">10%</div>
+    <div class="progress-bar bg-success pgb2" style="width:10%" id="progressbar">10%</div>
     </div>
   <center>
     
 
     <div id="tenban" style="display: none;width: 380px;">
-    <h3 class="main name" style="margin-top: 50px;">Uhmm....Tên bạn là gì nhỉ?</h3>
+    <h3 class="main name" style="margin-top: 50px;">Uhmm....Bạn tên là gì nhỉ?</h3>
     <input class="form-control form-control-lg name2" type="text" placeholder="VD: Dương Tùng Anh">
     <br>
     <a class="but" href="javascript:sex()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
@@ -498,7 +501,7 @@ element.addEventListener('animationend', function() { question1() })
     </div>
     <div id="tuoi" style="display: none;width: 380px;">
     <h3 class="main age" style="margin-top: 50px;">Được rồi, câu hỏi cuối cùng này... Bạn hiện nay bao nhiêu tuổi?</h3>
-    <input class="form-control form-control-lg name2" type="text" placeholder="VD: 17">
+    <input class="form-control form-control-lg name2" type="text" placeholder="VD: 17" id="intTextBox">
     <br>
     <a class="but" href="javascript:thongbao()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
     </div>
@@ -510,4 +513,26 @@ element.addEventListener('animationend', function() { question1() })
 <h3 class="main done2" id="thongbao-sau" style="display: none;">giờ chúng ta hãy cùng bắt đầu trắc nghiệm nào...</h3>
 </center>
 </div>
+<script>
+  // Restricts input for the given textbox to the given inputFilter function.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+setInputFilter(document.getElementById("intTextBox"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+});
+</script>
 </body>
