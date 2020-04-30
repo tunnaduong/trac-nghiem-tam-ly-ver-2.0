@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/5468db3c8c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/5468db3c8c.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -341,19 +341,34 @@ element.classList.add('animated', 'fadeInDown')
 }
 
 function sex(){
-
 const element =  document.querySelector('.name')
 element.classList.remove('fadeInDown')
 element.classList.add('animated', 'fadeOutDown')
-element.addEventListener('animationend', function() { document.getElementById("tenban").style.display = 'none'; })
-  
+element.addEventListener('animationend', function() { document.getElementById("tenban").style.display = 'none'; askSex() })
+  function askSex(){
+    document.getElementById("gioitinh").style.display = 'block';
+const element =  document.querySelector('.sex')
+element.classList.add('animated', 'fadeInDown')
+  }
+}
+
+function age(){
+  const element =  document.querySelector('.sex')
+element.classList.remove('animated', 'fadeInDown')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { document.getElementById("gioitinh").style.display = 'none'; askAge() })
+  function askAge(){
+document.getElementById("tuoi").style.display = 'block';
+const element =  document.querySelector('.age')
+element.classList.add('animated', 'fadeInDown')
+}
 }
 
 </script>
 <style>
   .but:link, .but:visited {
-  background-color: #f44336;
-  color: white;
+  background-color: #ffffff;
+  color: black;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -361,7 +376,49 @@ element.addEventListener('animationend', function() { document.getElementById("t
 }
 
 .but:hover, .but:active {
-  background-color: red;
+  background-color: white;
+}
+
+.segmented-control {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+}
+
+.segmented-control input[type='radio'] {
+  position: absolute;
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.segmented-control label {
+  flex: 1 0 auto;
+  text-align: center;
+  margin: 0;
+  padding: .5rem 1rem;
+  border-right: 1px solid #ffffff;
+  cursor: pointer;
+  font-family: Helvetica, Arial, Sans serif;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.segmented-control label:last-child {
+  border: none;
+}
+
+.segmented-control input[type='radio']:checked + label,
+  .segmented-control input[type='radio']:focus + label {
+  background-color: #ffffff;
+  color: black;
 }
 </style>
 <div class="warmup3" id="warmup" style="display: none;">
@@ -372,10 +429,40 @@ element.addEventListener('animationend', function() { document.getElementById("t
 </div>
 
 <div id="askName" style="display: none;">
+
   <center>
-    <div id="tenban" style="display: none;width: 600px;">
+    <div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+    40%
+  </div>
+</div>
+    <div id="tenban" style="display: none;width: 380px;">
     <h3 class="main name" style="margin-top: 50px;">Uhmm....Tên bạn là gì nhỉ?</h3>
     <input class="form-control form-control-lg name2" type="text" placeholder="VD: Dương Tùng Anh">
+    <br>
+    <a class="but" href="javascript:sex()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div id="gioitinh" style="display: none;width: 380px;">
+    <h3 class="main sex" style="margin-top: 50px;">OK, thế còn giới tính của bạn thì sao?</h3>
+<form action="#">
+  <div class="segmented-control">
+    <input type="radio" name="sex" id="male" value="male" />
+    <label for="male">Nam</label>
+    <input type="radio" name="sex" id="female" value="female" />
+    <label for="female">Nữ</label>
+    <input type="radio" name="sex" id="other" value="other" />
+    <label for="other">Khác</label>
+    <input type="radio" name="sex" id="rathernotsay" value="rathernotsay" />
+    <label for="rathernotsay">Không muốn nói</label>
+  </div>
+</form>
+    <br>
+    <a class="but" href="javascript:age()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div id="tuoi" style="display: none;width: 380px;">
+    <h3 class="main age" style="margin-top: 50px;">Được rồi, câu hỏi cuối cùng này... Bạn hiện nay bao nhiêu tuổi?</h3>
+    <input class="form-control form-control-lg name2" type="text" placeholder="VD: 17">
     <br>
     <a class="but" href="javascript:sex()">Tiếp tục <i class="fas fa-chevron-right"></i></a>
     </div>
