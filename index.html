@@ -231,6 +231,7 @@ sức khỏe tâm thần.</p>
 <br>
 
 <a href="#" class="txts" style="float: right;font-size: 20px;color: #e26b26;" onclick="mainFade()"><b>Làm trắc nghiệm ></b></a>
+<a href="#" class="txts" style="float: left;font-size: 20px;color: orange;opacity: 0.3;" onclick="skip()"><b>Skip >.< (for developing purpose only)</b></a>
 <br>
 </div>
 </div>
@@ -280,7 +281,36 @@ function hideDiv(){
 }
 }
 
+// For developing purpose, the skipable content should start here
 
+ function skip(){
+ 	document.getElementById("mainDiv").style.display = 'none';
+thongbaoend();
+ }
+
+function thongbaoend(){
+  	document.getElementById("thongbao-done").style.display = 'none';
+  	document.getElementById("thongbaoend").style.display = 'block';
+  	const element =  document.querySelector('.thongbaoend')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(fadeThongbao2, 2050) })
+  }
+ function fadeThongbao2(){
+const element =  document.querySelector('.hide1')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienCauhoi1() })
+  }
+function hienCauhoi1(){
+	document.getElementById("thongbaoend").style.display = 'none';
+  document.getElementById("cauhoi1").style.display = 'block';
+const element =  document.querySelector('.cauhoi')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(f, 2050) })
+}
+
+// And then end here
+
+// Normally it should be started here
 function loadd(){
 document.getElementById("concu").style.display = 'block';
 const element =  document.querySelector('.loadd')
@@ -389,6 +419,7 @@ const element =  document.querySelector('.pgb')
 element.classList.add('animated', 'fadeOutUp')
 element.addEventListener('animationend', function() { document.getElementById("pgb-main").style.display = 'none';hienThongbao() })
  }
+
 function hienThongbao(){
 document.getElementById("thongbao-done").style.display = 'block';
 document.getElementById("thongbao-truoc").style.display = 'block';
@@ -405,9 +436,27 @@ element.addEventListener('animationend', function() { setTimeout(fadeThongbao, 2
 function fadeThongbao(){
 const element =  document.querySelector('.done3')
 element.classList.add('animated', 'fadeOutDown')
-element.addEventListener('animationend', function() { question1() })
+element.addEventListener('animationend', function() { thongbaoend() })
   }
-
+  function thongbaoend(){
+  	document.getElementById("thongbao-done").style.display = 'none';
+  	document.getElementById("thongbaoend").style.display = 'block';
+  	const element =  document.querySelector('.thongbaoend')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(fadeThongbao2, 4050) })
+  }
+  function fadeThongbao2(){
+const element =  document.querySelector('.hide1')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienCauhoi1() })
+  }
+function hienCauhoi1(){
+  document.getElementById("cauhoi1").style.display = 'block';
+  document.getElementById("thongbaoend").style.display = 'none';
+const element =  document.querySelector('.cauhoi')
+element.classList.add('animated', 'fadeInDown')
+element.addEventListener('animationend', function() { setTimeout(f, 2050) })
+}
 }
 
 
@@ -420,6 +469,7 @@ element.addEventListener('animationend', function() { question1() })
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-radius: 50px;
 }
 
 .but:hover, .but:active {
@@ -466,6 +516,16 @@ element.addEventListener('animationend', function() { question1() })
   .segmented-control input[type='radio']:focus + label {
   background-color: #ffffff;
   color: black;
+}
+
+.buttoninline {
+
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.active {
+	background-color: green;
 }
 </style>
 <div class="warmup3" id="warmup" style="display: none;">
@@ -519,6 +579,42 @@ element.addEventListener('animationend', function() { question1() })
 <h3 class="main done2" id="thongbao-sau" style="display: none;">giờ chúng ta hãy cùng bắt đầu trắc nghiệm nào...</h3>
 </center>
 </div>
+<div class="hide1" id="thongbaoend" style="display: none;">
+	<center>
+		<h3 class="thongbaoend main hide1" style="margin-top: 50px;font-size: 25px;">Trong 2 tuần qua, bạn có thường gặp phải các vấn đề sau đây?</h3>
+	</center>
+</div>
+<center>
+<div class="cauhoi" id="cauhoi1" style="display: none;width: 90%;max-width: 580px;">
+
+<p class="main" style="margin-top: 50px;margin-bottom: 0px;">CÂU HỎI 1</p>
+<p class="main" style="font-size: 25px;">Giảm quan tâm hoặc hứng thú trong mọi hoạt động</p>
+<hr style="background-color: white;opacity: 0.5;">
+<div id="buttons">
+<div class="buttoninline">
+	<button type="button" class="btn btn-light buttonn active" style="width: 150px;margin-right: 20px;border-radius: 50px;">Không lúc nào</button>
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;">Vài ngày</button>
+</div>
+<div class="buttoninline" style="margin-top: 20px;">
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;height: 38px;margin-right: 20px;border-radius: 50px;font-size: 12px">Hơn một nửa số ngày</button>
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;">Hầu như mỗi ngày</button>
+</div>
+</div>
+  <script>
+// Add active class to the current button (highlight it)
+var header = document;
+var btns = header.getElementsByClassName("buttonn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+</script>
+<a class="but" href="javascript:thongbao()" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+</div>
+</center>
 <script>
   // Restricts input for the given textbox to the given inputFilter function.
 function setInputFilter(textbox, inputFilter) {
