@@ -305,9 +305,29 @@ function hienCauhoi1(){
   document.getElementById("cauhoi1").style.display = 'block';
 const element =  document.querySelector('.cauhoi')
 element.classList.add('animated', 'fadeInDown')
-element.addEventListener('animationend', function() { setTimeout(f, 2050) })
 }
-
+ function fadeCauhoi1(){
+const element =  document.querySelector('.cauhoi')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienCauhoi2() })
+  }
+  function hienCauhoi2(){
+	document.getElementById("cauhoi1").style.display = 'none';
+  document.getElementById("cauhoi2").style.display = 'block';
+const element =  document.querySelector('.cauhoi2')
+element.classList.add('animated', 'fadeInDown')
+}
+ function fadeCauhoi2(){
+const element =  document.querySelector('.cauhoi2')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienThongbaoAfter() })
+  }
+  function hienThongbaoAfter(){
+	document.getElementById("cauhoi2").style.display = 'none';
+  document.getElementById("thongbaoafter").style.display = 'block';
+const element =  document.querySelector('.thongbaoafter')
+element.classList.add('animated', 'fadeInDown')
+}
 // And then end here
 
 // Normally it should be started here
@@ -524,8 +544,17 @@ element.addEventListener('animationend', function() { setTimeout(f, 2050) })
   align-items: center;
 }
 
-.active {
-	background-color: green;
+.activee {
+	background-color: #a9ffa9;
+	border: 2px solid black;
+}
+.activeee {
+	background-color: #a9ffa9;
+	border: 2px solid black;
+}
+.activeeee {
+	background-color: #a9ffa9;
+	border: 2px solid black;
 }
 </style>
 <div class="warmup3" id="warmup" style="display: none;">
@@ -590,32 +619,147 @@ element.addEventListener('animationend', function() { setTimeout(f, 2050) })
 <p class="main" style="margin-top: 50px;margin-bottom: 0px;">CÂU HỎI 1</p>
 <p class="main" style="font-size: 25px;">Giảm quan tâm hoặc hứng thú trong mọi hoạt động</p>
 <hr style="background-color: white;opacity: 0.5;">
+
 <div id="buttons">
 <div class="buttoninline">
-	<button type="button" class="btn btn-light buttonn active" style="width: 150px;margin-right: 20px;border-radius: 50px;">Không lúc nào</button>
-	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;">Vài ngày</button>
+	<button type="button" class="btn btn-light buttonn activee" style="width: 150px;margin-right: 20px;border-radius: 50px;" onclick="changeScoreQ1A1()">Không lúc nào</button>
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ1A2()">Vài ngày</button>
 </div>
 <div class="buttoninline" style="margin-top: 20px;">
-	<button type="button" class="btn btn-light buttonn" style="width: 150px;height: 38px;margin-right: 20px;border-radius: 50px;font-size: 12px">Hơn một nửa số ngày</button>
-	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;">Hầu như mỗi ngày</button>
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;height: 38px;margin-right: 20px;border-radius: 50px;font-size: 12px" onclick="changeScoreQ1A3()">Hơn một nửa số ngày</button>
+	<button type="button" class="btn btn-light buttonn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ1A4()">Hầu như mỗi ngày</button>
 </div>
 </div>
   <script>
-// Add active class to the current button (highlight it)
+
+</script>
+<a class="but" href="javascript:fadeCauhoi1()" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+</div>
+</center>
+
+<center>
+<div class="cauhoi2" id="cauhoi2" style="display: none;width: 90%;max-width: 580px;">
+
+<p class="main" style="margin-top: 50px;margin-bottom: 0px;">CÂU HỎI 2</p>
+<p class="main" style="font-size: 25px;">Cảm thấy trì trệ, chán nản, bi quan hoặc không còn hi vọng</p>
+<hr style="background-color: white;opacity: 0.5;">
+
+<div id="buttons">
+<div class="buttoninline">
+	<button type="button" class="btn btn-light buttonnn activeee" style="width: 150px;margin-right: 20px;border-radius: 50px;" onclick="changeScoreQ2A1()">Không lúc nào</button>
+	<button type="button" class="btn btn-light buttonnn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ2A2()">Vài ngày</button>
+</div>
+<div class="buttoninline" style="margin-top: 20px;">
+	<button type="button" class="btn btn-light buttonnn" style="width: 150px;height: 38px;margin-right: 20px;border-radius: 50px;font-size: 12px" onclick="changeScoreQ2A3()">Hơn một nửa số ngày</button>
+	<button type="button" class="btn btn-light buttonnn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ2A4()">Hầu như mỗi ngày</button>
+</div>
+</div>
+
+<a class="but" href="javascript:fadeCauhoi2();var tongdiem1 = x1 + x2;if (tongdiem1 < 3) {
+			funcsion1()
+		} else if (tongdiem1 >= 3) {
+			funcsion2()
+		}" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+</div>
+</center>
+
+<center>
+<div class="thongbaoafter" id="thongbaoafter" style="display: none;width: 90%;max-width: 580px;">
+	<script>
+		  	// Add active class to the current button (highlight it)
 var header = document;
 var btns = header.getElementsByClassName("buttonn");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
+  var current = document.getElementsByClassName("activee");
+  current[0].className = current[0].className.replace(" activee", "");
+  this.className += " activee";
   });
 }
-</script>
-<a class="but" href="javascript:thongbao()" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+
+var x1 = 0;
+function changeScoreQ1A1() {x1 = 0;}
+function changeScoreQ1A2() {x1 = 1;}
+function changeScoreQ1A3() {x1 = 2;}
+function changeScoreQ1A4() {x1 = 3;}
+
+// Add active class to the current button (highlight it)
+var header2 = document;
+var btns2 = header2.getElementsByClassName("buttonnn");
+for (var i2 = 0; i2 < btns2.length; i2++) {
+  btns2[i2].addEventListener("click", function() {
+  var current2 = document.getElementsByClassName("activeee");
+  current2[0].className = current2[0].className.replace(" activeee", "");
+  this.className += " activeee";
+  });
+}
+
+var x2 = 0;
+function changeScoreQ2A1() {x2 = 0;}
+function changeScoreQ2A2() {x2 = 1;}
+function changeScoreQ2A3() {x2 = 2;}
+function changeScoreQ2A4() {x2 = 3;}
+
+function funcsion1() {
+	var thongb = 'Cảm xúc của bạn tốt';
+document.getElementById("tunnaa").innerHTML = thongb;
+}
+function funcsion2() {
+	var thongb = "Xin bạn vui lòng trả lời tiếp các câu hỏi trong bảng phỏng vấn PHQ-9";
+document.getElementById("tunnaa").innerHTML = thongb;
+setTimeout(myFunction, 4400)
+function myFunction(){
+const element =  document.querySelector('.thongbaoafter')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienCauhoi3() })
+}
+}
+function hienCauhoi3(){
+		document.getElementById("thongbaoafter").style.display = 'none';
+  document.getElementById("cauhoi3").style.display = 'block';
+const element =  document.querySelector('.cauhoi3')
+element.classList.add('animated', 'fadeInDown')
+}
+
+	</script>
+	<h3 class="main" id="tunnaa" style="margin-top: 50px">Tunna</h3>
+	</div>
+<div id="cauhoi3" class="cauhoi3" style="display: none;width: 90%;max-width: 580px;">
+	
+<p class="main" style="margin-top: 50px;margin-bottom: 0px;">CÂU HỎI 3</p>
+<p class="main" style="font-size: 25px;">Khó ngủ, mất ngủ hoặc ngủ rất nhiều</p>
+<hr style="background-color: white;opacity: 0.5;">
+
+<div id="buttons">
+<div class="buttoninline">
+	<button type="button" class="btn btn-light buttonnnn activeeee" style="width: 150px;margin-right: 20px;border-radius: 50px;" onclick="changeScoreQ3A1()">Không lúc nào</button>
+	<button type="button" class="btn btn-light buttonnnn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ3A2()">Vài ngày</button>
+</div>
+<div class="buttoninline" style="margin-top: 20px;">
+	<button type="button" class="btn btn-light buttonnnn" style="width: 150px;height: 38px;margin-right: 20px;border-radius: 50px;font-size: 12px" onclick="changeScoreQ3A3()">Hơn một nửa số ngày</button>
+	<button type="button" class="btn btn-light buttonnnn" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ3A4()">Hầu như mỗi ngày</button>
+</div>
+</div>
+<a class="but" href="javascript:fadeCauhoi3()" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
 </div>
 </center>
 <script>
+	// Add active class to the current button (highlight it)
+var header3 = document;
+var btns3 = header.getElementsByClassName("buttonnnn");
+for (var i3 = 0; i3 < btns3.length; i3++) {
+  btns3[i3].addEventListener("click", function() {
+  var current3 = document.getElementsByClassName("activeeee");
+  current3[0].className = current3[0].className.replace(" activeeee", "");
+  this.className += " activeeee";
+  });
+}
+
+var x3 = 0;
+function changeScoreQ3A1() {x3 = 0;}
+function changeScoreQ3A2() {x3 = 1;}
+function changeScoreQ3A3() {x3 = 2;}
+function changeScoreQ3A4() {x3 = 3;}
   // Restricts input for the given textbox to the given inputFilter function.
 function setInputFilter(textbox, inputFilter) {
   ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
