@@ -1112,13 +1112,8 @@ element.classList.add('animated', 'fadeInDown')
 	<button type="button" class="btn btn-light button9" style="width: 150px;border-radius: 50px;" onclick="changeScoreQ9A4()">Hầu như mỗi ngày</button>
 </div>
 </div>
-<a class="but" href="javascript:fadeCauhoi9()" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
-</div>
-
-
-</center>
-<script>
-	// Add active class to the current button (highlight it)
+<script type="text/javascript">
+		// Add active class to the current button (highlight it)
 var header3 = document;
 var btns3 = header3.getElementsByClassName("buttonnnn");
 for (var i3 = 0; i3 < btns3.length; i3++) {
@@ -1237,6 +1232,109 @@ function changeScoreQ9A2() {x9 = 1;}
 function changeScoreQ9A3() {x9 = 2;}
 function changeScoreQ9A4() {x9 = 3;}
 
+function fadeCauhoi9(){
+const element =  document.querySelector('.cauhoi9')
+element.classList.add('animated', 'fadeOutDown')
+element.addEventListener('animationend', function() { hienKetqua() })
+  }
+  function hienKetqua(){
+	document.getElementById("cauhoi9").style.display = 'none';
+  document.getElementById("mainDiv3").style.display = 'block';
+const element =  document.querySelector('.main33')
+element.classList.add('animated', 'fadeInDown')
+}
+</script>
+<a class="but" href="javascript:fadeCauhoi9();var tongdiem2 = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 +x9;if (tongdiem2 < 5) {
+			funcsion3()
+		} else if (tongdiem2 >= 5) {
+			funcsion4()
+		}" style="margin-top: 25px">Tiếp tục <i class="fas fa-chevron-right"></i></a>
+</div>
+<style type="text/css">
+	svg {
+  width: 100px;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  &.circle {
+    -webkit-animation: dash .9s ease-in-out;
+    animation: dash .9s ease-in-out;
+  }
+  &.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash .9s .35s ease-in-out forwards;
+    animation: dash .9s .35s ease-in-out forwards;
+  }
+  &.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+    animation: dash-check .9s .35s ease-in-out forwards;
+  }
+}
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+</style>
+<div class="mainDiv main33" style="transform: scale(0.9, 0.9);display: none;" id="mainDiv3">
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="crossma" viewBox="0 0 130.2 130.2" style="width: 58px;display:  none;">
+  <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+  <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+  <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+</svg>
+	<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" id="checkma" style="display: none;margin-top: 50px;margin-bottom: 0px" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+	<h3 id="tunnaa2" style="margin-top: 20px;margin-bottom: 50px">Tunna</h3>
+	</div>
+</center>
+<script>
+	function funcsion3(){
+		var thongb2 = 'Cảm xúc của bạn tốt';
+document.getElementById("tunnaa2").innerHTML = thongb2;
+document.getElementById("checkma").style.display = 'block';
+	}
+	function funcsion4(){
+		var thongb2 = 'Vui lòng đến gặp bác sĩ chuyên khoa để được khám và tư vấn phù hợp';
+document.getElementById("tunnaa2").innerHTML = thongb2;
+document.getElementById("crossma").style.display = 'block';
+	}
 
   // Restricts input for the given textbox to the given inputFilter function.
 function setInputFilter(textbox, inputFilter) {
